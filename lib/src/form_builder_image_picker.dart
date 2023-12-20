@@ -123,6 +123,7 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
       optionsBuilder;
 
   final WidgetBuilder? loadingWidget;
+  final Map<String, String>? headers;
 
   FormBuilderImagePicker({
     super.key,
@@ -170,6 +171,7 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
       ImageSourceOption.camera,
       ImageSourceOption.gallery,
     ],
+    this.headers,
   })  : assert(maxImages == null || maxImages >= 0),
         super(
           builder: (FormFieldState<List<dynamic>?> field) {
@@ -275,6 +277,7 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
                               ? Image.network(
                                   displayItem,
                                   fit: fit,
+                                  headers: headers,
                                 )
                               : XFileImage(
                                   file: displayItem,
